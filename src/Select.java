@@ -36,16 +36,15 @@ public class Select {
             //loop through the result set
             while (rs.next()) {
                 System.out.println(
-                        rs.getInt("id") + ". " +
-                        rs.getInt("mobileNumber") + ". " +
-                        rs.getString("name") + "\n" +
-                        rs.getString("address") + "\n" +
-                        rs.getInt("cityId") + "\n" +
-                        rs.getInt("countryId") + "\n" +
-                        rs.getInt("cardNumber") + "\n" +
-                        //rs.getDate("registrationDateTime") + "\n" +
-                        rs.getString("password") + "\n" +
-                        rs.getInt("paymentTransactionId") + "\n\n"
+                    rs.getInt("id") + ". " +
+                    rs.getInt("mobileNumber") + ". " +
+                    rs.getString("name") + "\n" +
+                    rs.getString("address") + "\n" +
+                    rs.getInt("cityId") + "\n" +
+                    rs.getInt("cardNumber") + "\n" +
+                    //rs.getData("registrationDateTime") + "\n" +
+                    rs.getString("password") + "\n" +
+                    rs.getInt("paymentTransactionId") + "\n\n"
                 );
             }
         }catch(SQLException e){
@@ -56,7 +55,7 @@ public class Select {
     public void selectOne(){
         String userInput;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Indtast et søgeord: ");
+        System.out.println("Enter a search: ");
         userInput = scanner.nextLine();
 
         String sql = "SELECT * FROM User WHERE name LIKE '%" + userInput + "%'";
@@ -66,7 +65,17 @@ public class Select {
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
-                System.out.println("name");
+                System.out.println(
+                    rs.getInt("id") + ". " +
+                    rs.getInt("mobileNumber") + ". " +
+                    rs.getString("name") + "\n" +
+                    rs.getString("address") + "\n" +
+                    rs.getInt("cityId") + "\n" +
+                    rs.getInt("cardNumber") + "\n" +
+                    //rs.getData("registrationDateTime") + "\n" +
+                    rs.getString("password") + "\n" +
+                    rs.getInt("paymentTransactionId") + "\n\n"
+                );
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
